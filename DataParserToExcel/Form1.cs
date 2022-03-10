@@ -34,7 +34,7 @@ namespace DataParserToExcel
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     ImportPath = openFileDialog.FileName;
-                    textBox1.Text = Path.GetFileName(openFileDialog.FileName);
+                    label2.Text = Path.GetFileName(openFileDialog.FileName);
                 }
             }
 
@@ -50,10 +50,11 @@ namespace DataParserToExcel
             btnExport.Enabled = false;
 
             SaveFileDialog saveFileDialog = new SaveFileDialog();
+            ImportPath = ImportPath.Replace(".txt", "");
+            saveFileDialog.FileName = Path.GetFileName(ImportPath);
+            saveFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
 
-            saveFileDialog.FileName = ImportPath;
-
-            if (saveFileDialog.ShowDialog() != DialogResult.OK && ImportPath == null) 
+            if (saveFileDialog.ShowDialog() != DialogResult.OK || ImportPath == null) 
             {
                 btnExport.Enabled = true;
                 
@@ -61,10 +62,14 @@ namespace DataParserToExcel
             }
 
             ExportPath = saveFileDialog.FileName;
+            if (File.Exists(ExportPath))
+            {
+                File.Delete(ExportPath);
+            }
 
             //getting lines from file
 
-            List<string> lines = File.ReadAllLines(ImportPath).ToList();
+            List<string> lines = File.ReadAllLines(ImportPath+".txt").ToList();
             lines.RemoveAll(s => s == "NEW LOG");
 
             //deserializing and adding lines to list
@@ -75,10 +80,7 @@ namespace DataParserToExcel
 
             Proccesing();
             
-
-
-            ExportPath = ExportPath.Replace(".txt", "");
-            workbook.SaveAs($"{ExportPath}.xlsx");
+            workbook.SaveAs(ExportPath);
 
             btnExport.Enabled = true;
         }

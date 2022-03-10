@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnChooseImportFile = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -63,20 +63,21 @@
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
-            // textBox1
+            // label2
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 38);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(170, 23);
-            this.textBox1.TabIndex = 6;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 15);
+            this.label2.TabIndex = 8;
             // 
             // TTEP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(194, 161);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnExport);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnChooseImportFile);
             this.Controls.Add(this.label1);
             this.MaximumSize = new System.Drawing.Size(210, 200);
@@ -93,6 +94,6 @@
         private Label label1;
         private Button btnChooseImportFile;
         private Button btnExport;
-        private TextBox textBox1;
+        private Label label2;
     }
 }
