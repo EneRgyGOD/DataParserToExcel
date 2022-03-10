@@ -2,17 +2,17 @@
 {
     public class SensorData
     {
-        string id;
-        string version;
-        int age;
-        string key;
-        List<Variable> variables;
+        public string id ;
+        public string version;
+        public int age;
+        public string key;
+        public List<Variable> variables;
     }
-    public class Variable 
+    public class Variable
     {
-        string type;
-        string unit;
-        string sensor;
-        float value;
+        public string type;
+        public string unit;
+        public string sensor;
+        public string value;
     }
 }
